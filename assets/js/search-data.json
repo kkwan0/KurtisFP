@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Title",
-            "content": "print(&quot;hello world&quot;) . hello world .",
+            "content": "Hello World Python Jupyter . Testing the python kernel title:Hello World Python Jupyter Kerneltoc: true comments: true categories: . print(&quot;hello world&quot;) . hello world .",
             "url": "https://paulman420.github.io/KurtisFP/2022/08/21/kurtis-python.html",
             "relUrl": "/2022/08/21/kurtis-python.html",
             "date": " • Aug 21, 2022"
@@ -14,7 +14,7 @@
     
         ,"post1": {
             "title": "Title",
-            "content": "System.out.println(&quot;Hello WOrld&quot;) . Hello WOrld .",
+            "content": "Hello Java Jupyter . Testing the java kernel title:Hello World Java Jupyter Kerneltoc: true comments: true categories: . System.out.println(&quot;Hello WOrld&quot;) . Hello WOrld .",
             "url": "https://paulman420.github.io/KurtisFP/2022/08/21/kurtis-java.html",
             "relUrl": "/2022/08/21/kurtis-java.html",
             "date": " • Aug 21, 2022"
@@ -25,7 +25,7 @@
     
         ,"post2": {
             "title": "Title",
-            "content": "Kurtis first entry . hi .",
+            "content": "first post . first post title:First Posttoc: true comments: true categories: . Kurtis first entry . hi .",
             "url": "https://paulman420.github.io/KurtisFP/2022/08/21/firstpost.html",
             "relUrl": "/2022/08/21/firstpost.html",
             "date": " • Aug 21, 2022"
