@@ -1,1 +1,1 @@
-Sitemap: https://fastpages.fast.ai/sitemap.xml
+Sitemap: https://paulman420.github.io/KurtisFP/sitemap.xml
