@@ -95,6 +95,22 @@
   
 
   
+      ,"page3": {
+          "title": "College Board",
+          "content": "Stuff for cb . Unit 1: Primitive Types .",
+          "url": "https://paulman420.github.io/KurtisFP/cb/",
+          "relUrl": "/cb/",
+          "date": ""
+      }
+      
+  
+
+  
+  
+
+  
+
+  
   
 
   
@@ -103,18 +119,13 @@
   
 
   
-
-  
   
 
   
   
 
   
-  
-
-  
-      ,"page10": {
+      ,"page11": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://paulman420.github.io/KurtisFP/robots.txt",
