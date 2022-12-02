@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -146,6 +146,15 @@ Notes:</p>
 <li>compound is +-, -=, *=, /=, %=</li>
 <li>increment is ++ or --</li>
 </ul>
+<p>Important words:</p>
+<ul>
+<li>Constructor - constructor initializes object, no return value, just initializes the object</li>
+<li>Accessor methods - "getters" returns values in defined class or reads the value. (get"classname")</li>
+<li>mutator methods - "setters" sets parameters for attribute, updates variable values, (set"classname") </li>
+<li>this keyword - object in constructor, used in setters to set variables</li>
+<li>Casting - assigning one data type to another data type, </li>
+<li>Casting - rounding - dividing non even numbers, rounds up, truncating is rounding down. </li>
+</ul>
 
 </div>
 </div>
@@ -171,12 +180,12 @@ Notes:</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">gradecalc</span> <span class="p">{</span>
     
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Final is part of the test category? true or false"</span><span class="p">);</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span> <span class="c1">// scans input</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Final is part of the test category? true or false"</span><span class="p">);</span> <span class="c1">//prints question</span>
         <span class="kt">boolean</span> <span class="n">finalIsTest</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextBoolean</span><span class="p">();</span>
         
         <span class="k">if</span> <span class="p">(</span><span class="n">finalIsTest</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Current grade:"</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Current grade:"</span><span class="p">);</span> <span class="c1">//scans for current grade, double to include the decimal stuff</span>
             <span class="kt">double</span> <span class="n">grade</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
             
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What percent of your grade is the tests category?"</span><span class="p">);</span>
@@ -196,10 +205,10 @@ Notes:</p>
             
             <span class="kt">double</span> <span class="n">percentReq</span> <span class="o">=</span> <span class="n">finalgrade</span> <span class="o">-</span> <span class="p">(</span><span class="n">grade</span> <span class="o">-</span> <span class="n">testsGrade</span> <span class="o">*</span> <span class="n">testsPercent</span><span class="o">/</span><span class="mf">100.0</span><span class="p">);</span>
             <span class="kt">double</span> <span class="n">testPointsNeeded</span> <span class="o">=</span> <span class="p">(</span><span class="n">percentReq</span><span class="o">/</span><span class="n">testsPercent</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">testsPoints</span> <span class="o">+</span> <span class="n">finalPoints</span><span class="p">);</span>
-            <span class="kt">double</span> <span class="n">finalPointsNeeded</span> <span class="o">=</span> <span class="n">testPointsNeeded</span> <span class="o">-</span> <span class="n">testsPoints</span><span class="p">;</span>
+            <span class="kt">double</span> <span class="n">finalPointsNeeded</span> <span class="o">=</span> <span class="n">testPointsNeeded</span> <span class="o">-</span> <span class="n">testsPoints</span><span class="p">;</span> <span class="c1">//calculates all the things</span>
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You need a "</span> <span class="o">+</span> <span class="n">finalPointsNeeded</span> <span class="o">+</span> <span class="s">" on the final."</span><span class="p">);</span>
             
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//else statement, what you need on the final to get grade</span>
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is your current grade?"</span><span class="p">);</span>
             <span class="kt">double</span> <span class="n">grade</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"How much percent of your grade is the final?"</span><span class="p">);</span>
@@ -210,7 +219,7 @@ Notes:</p>
             <span class="kt">double</span> <span class="n">percentReq</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">grade</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">100.0</span><span class="o">-</span><span class="n">finalPercent</span><span class="p">);</span>
             <span class="kt">double</span> <span class="n">gradeNeeded</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">percentReq</span><span class="o">/</span><span class="n">finalPercent</span><span class="p">);</span>
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You need a "</span> <span class="o">+</span> <span class="n">gradeNeeded</span> <span class="o">+</span> <span class="s">" on the test."</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="p">}</span> 
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="n">gradecalc</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
@@ -280,7 +289,28 @@ You need a 155.0 on the final.
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/KurtisFP/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/KurtisFP/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"><li>
+  <a rel="me" href="https://github.com/nighthawkcoders" target="_blank" title="github">
+    <svg class="svg-icon grey">
+      <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://twitter.com/NighthawkCoding" target="_blank" title="twitter">
+    <svg class="svg-icon grey">
+      <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#twitter"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://www.youtube.com/channel/UClIKOsDS5dsfzFA3zveDT3Q" target="_blank" title="youtube">
+    <svg class="svg-icon grey">
+      <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#youtube"></use>
+    </svg>
+  </a>
+</li>
+</ul>
 </div>
 
   </div>
