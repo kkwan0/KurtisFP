@@ -187,22 +187,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2
-12345doubles
-0.0
-0.01.12.23.34.45.5</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     
 
@@ -270,24 +254,81 @@ window.onload = wrap_img;
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
+</div>
+    
 
-<div class="output_area">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>FRQ
+2017 #3</p>
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The third element in intArray is: 3
-Random number between 0 and 1: 0.6782159106413519
-The fourth element in boolArray is: true
-The second element in charArray is: b
-The third element in integerArray is: 3
-Random number in Double wrapper class: 0.6782159106413519
-The fourth element in booleanArray is: true
-The second element in characterArray is: b
-</pre>
 </div>
 </div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Phrase</span>
+<span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">currentPhrase</span><span class="p">;</span>
+
+    <span class="cm">/**Constructs a new phrase object */</span>
+    <span class="kd">public</span> <span class="nf">Phrase</span><span class="p">(</span><span class="n">String</span> <span class="n">p</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">currentPhrase</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/** Returns the index of the nth occurrence of str in the current phrase;</span>
+<span class="cm">     * returns -1 if the nth occurence doesn't exist</span>
+<span class="cm">     * Precondition: str.length() &gt; 0 and n &gt; 0</span>
+<span class="cm">     * Postcondition: the current phrase is not modified</span>
+<span class="cm">     * </span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">findNthOccurrence</span><span class="p">(</span><span class="n">String</span> <span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">replaceNthOccurrence</span><span class="p">(</span><span class="n">String</span> <span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">String</span> <span class="n">repl</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">indexOfString</span> <span class="o">=</span> <span class="n">findNthOccurrence</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="c1">//find starting index in currentPhrase</span>
+                    <span class="c1">//control structure, selection structure, if statement</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">indexOfString</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span> <span class="c1">//if string found at least n times</span>
+            <span class="n">String</span> <span class="n">leadingStr</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">currentPhrase</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">indexOfString</span><span class="p">);</span> <span class="c1">//get leading before nth</span>
+            <span class="n">String</span> <span class="n">trailingStr</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">currentPhrase</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">indexOfString</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="na">length</span><span class="p">());</span> <span class="c1">//trailing part after</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">currentPhrase</span> <span class="o">=</span> <span class="n">leadingStr</span> <span class="o">+</span> <span class="n">repl</span> <span class="o">+</span> <span class="n">trailingStr</span><span class="p">;</span> <span class="c1">//replace nth occurance with replacement</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// iteration --&gt; while loop</span>
+        <span class="c1">// --&gt; keep repeating the loop until findNthOccurrence return -1</span>
+        <span class="c1">// --&gt; (findNthOccurrence(..) != -1)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">findLastOccurrence</span><span class="p">(</span><span class="n">String</span> <span class="n">str</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="c1">//control structures</span>
+        <span class="c1">//use of conditional statements like while loop</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">findNthOccurrence</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">findNthOccurrence</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">currentPhrase</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
