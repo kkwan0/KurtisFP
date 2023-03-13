@@ -2,7 +2,7 @@
   
     
         "post0": {
-            "title": "Primitive Types",
+            "title": "39 MC",
             "content": "39 question MC: . score: 34/39 . 15: I chose E because I thought that it would print all the steps on the way, but it wouldn&#39;t. So A is the right answer. . 16: . I chose C because I thought that it would iterate the rows of the array, but it would iterate the columns of the array. . 17: . I chose C because I saw the +2 and I thought that it would add all the even numbers, but it was actually going to add all the odd numbers. . 28: . I chose C because I thought that it would evaluate all the iterations not the outside ones, so it would be minus one. . 37: . I chose B because I checked through III and I didn&#39;t find it to fit the model, but it turns out that it would fit. So the right answer is E. .",
             "url": "https://paulman420.github.io/KurtisFP/jupyter/2023/03/13/36mc.html",
             "relUrl": "/jupyter/2023/03/13/36mc.html",
