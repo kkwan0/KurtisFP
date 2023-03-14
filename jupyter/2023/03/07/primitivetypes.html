@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -282,24 +282,42 @@ window.onload = wrap_img;
 <div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Phrase</span>
 <span class="p">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">currentPhrase</span><span class="p">;</span>
-
     <span class="cm">/**Constructs a new phrase object */</span>
     <span class="kd">public</span> <span class="nf">Phrase</span><span class="p">(</span><span class="n">String</span> <span class="n">p</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">currentPhrase</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
     <span class="p">}</span>
-
     <span class="cm">/** Returns the index of the nth occurrence of str in the current phrase;</span>
 <span class="cm">     * returns -1 if the nth occurence doesn't exist</span>
 <span class="cm">     * Precondition: str.length() &gt; 0 and n &gt; 0</span>
 <span class="cm">     * Postcondition: the current phrase is not modified</span>
-<span class="cm">     * </span>
+<span class="cm">     *</span>
 <span class="cm">     */</span>
     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">findNthOccurrence</span><span class="p">(</span><span class="n">String</span> <span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
     <span class="p">{</span>
-
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">currentPhrase</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">currentPhrase</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">currentPhrase</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">currentPhrase</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">count</span> <span class="o">==</span> <span class="n">n</span><span class="p">){</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">n</span><span class="p">){</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">pos</span><span class="p">;</span>
     <span class="p">}</span>
-
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">replaceNthOccurrence</span><span class="p">(</span><span class="n">String</span> <span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">String</span> <span class="n">repl</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="kt">int</span> <span class="n">indexOfString</span> <span class="o">=</span> <span class="n">findNthOccurrence</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="c1">//find starting index in currentPhrase</span>
@@ -310,7 +328,6 @@ window.onload = wrap_img;
             <span class="k">this</span><span class="p">.</span><span class="na">currentPhrase</span> <span class="o">=</span> <span class="n">leadingStr</span> <span class="o">+</span> <span class="n">repl</span> <span class="o">+</span> <span class="n">trailingStr</span><span class="p">;</span> <span class="c1">//replace nth occurance with replacement</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
     <span class="c1">// iteration --&gt; while loop</span>
         <span class="c1">// --&gt; keep repeating the loop until findNthOccurrence return -1</span>
         <span class="c1">// --&gt; (findNthOccurrence(..) != -1)</span>
@@ -325,16 +342,34 @@ window.onload = wrap_img;
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">findNthOccurrence</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
     <span class="p">}</span>
-
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="n">currentPhrase</span><span class="p">;</span>
     <span class="p">}</span>
-
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Phrase</span> <span class="n">phrase1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Phrase</span><span class="p">(</span><span class="s">"A cat ate late."</span><span class="p">);</span>
+        <span class="n">phrase1</span><span class="p">.</span><span class="na">replaceNthOccurrence</span><span class="p">(</span><span class="s">"at"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"rane"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">phrase1</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
+<span class="n">Phrase</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>A crane ate late.
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
