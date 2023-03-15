@@ -201,60 +201,115 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrimitiveTypes</span> <span class="p">{</span>
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Conversions</span><span class="p">{</span>
     
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">double</span><span class="o">[]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+
+
+    <span class="kd">public</span> <span class="nf">Conversions</span><span class="p">(</span><span class="kt">byte</span> <span class="n">a1</span><span class="p">,</span><span class="kt">short</span> <span class="n">a2</span><span class="p">,</span><span class="kt">int</span> <span class="n">a3</span><span class="p">,</span> <span class="kt">float</span> <span class="n">d1</span><span class="p">,</span><span class="kt">double</span> <span class="n">d2</span><span class="p">,</span>
+                <span class="kt">boolean</span> <span class="n">b1</span><span class="p">,</span><span class="kt">boolean</span> <span class="n">b2</span><span class="p">,</span><span class="kt">char</span> <span class="n">c1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">a1</span><span class="p">;</span>
+        <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">a2</span><span class="p">;</span>
+        <span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="o">]=</span><span class="n">a3</span><span class="p">;</span>
+        <span class="n">arr1</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">d1</span><span class="p">;</span>
+        <span class="n">arr1</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">d2</span><span class="p">;</span>
+        <span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">b1</span><span class="p">;</span>
+        <span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">b2</span><span class="p">;</span>
+        <span class="n">ch</span><span class="o">=</span><span class="n">c1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">defineWrapper</span><span class="p">(</span><span class="kt">byte</span> <span class="n">a1</span><span class="p">,</span><span class="kt">short</span> <span class="n">a2</span><span class="p">,</span><span class="kt">int</span> <span class="n">a3</span><span class="p">,</span> <span class="kt">float</span> <span class="n">d1</span><span class="p">,</span><span class="kt">double</span> <span class="n">d2</span><span class="p">,</span>
+    <span class="kt">boolean</span> <span class="n">b1</span><span class="p">,</span><span class="kt">boolean</span> <span class="n">b2</span><span class="p">,</span><span class="kt">char</span> <span class="n">c1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Integer</span> <span class="n">n1</span><span class="o">=</span><span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">a1</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">n2</span><span class="o">=</span><span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">a2</span><span class="p">);</span>
+        <span class="n">Integer</span> <span class="n">n3</span><span class="o">=</span><span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">a3</span><span class="p">);</span>
+        <span class="n">Double</span> <span class="n">dd1</span><span class="o">=</span><span class="n">Double</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">d1</span><span class="p">);</span>
+        <span class="n">Double</span> <span class="n">dd2</span><span class="o">=</span><span class="n">Double</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">d2</span><span class="p">);</span>
+        <span class="n">Boolean</span> <span class="n">bb1</span><span class="o">=</span><span class="n">Boolean</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">b1</span><span class="p">);</span>
+        <span class="n">Boolean</span> <span class="n">bb2</span><span class="o">=</span><span class="n">Boolean</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">b2</span><span class="p">);</span>
+        <span class="n">Character</span> <span class="n">cc</span><span class="o">=</span><span class="n">Character</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+
+        <span class="n">String</span> <span class="n">str</span><span class="o">=</span><span class="s">"Byte val:"</span><span class="o">+</span><span class="n">n1</span><span class="o">+</span>
+        <span class="s">"\n Short val:"</span><span class="o">+</span><span class="n">n2</span><span class="o">+</span>
+        <span class="s">"\n Int val:"</span><span class="o">+</span><span class="n">n3</span><span class="o">+</span>
+        <span class="s">"\n Float val:"</span><span class="o">+</span><span class="n">dd1</span><span class="o">+</span>
+        <span class="s">"\n double val:"</span><span class="o">+</span><span class="n">dd2</span><span class="o">+</span>
+        <span class="s">"\n boolean val1:"</span><span class="o">+</span><span class="n">bb1</span><span class="o">+</span>
+        <span class="s">"\n boolean val2:"</span><span class="o">+</span><span class="n">bb2</span><span class="o">+</span>
+        <span class="s">"\n char val:"</span><span class="o">+</span><span class="n">cc</span><span class="p">;</span>
         
-        <span class="c1">// int example using array and substring method</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">intArray</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
-        <span class="n">String</span> <span class="n">intString</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">intArray</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The third element in intArray is: "</span> <span class="o">+</span> <span class="n">intString</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
-        
-        <span class="c1">// double example using random method</span>
-        <span class="kt">double</span> <span class="n">randomNumber</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">();</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Random number between 0 and 1: "</span> <span class="o">+</span> <span class="n">randomNumber</span><span class="p">);</span>
-        
-        <span class="c1">// boolean example using array</span>
-        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">boolArray</span> <span class="o">=</span> <span class="p">{</span><span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">};</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The fourth element in boolArray is: "</span> <span class="o">+</span> <span class="n">boolArray</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
-        
-        <span class="c1">// char example using array</span>
-        <span class="kt">char</span><span class="o">[]</span> <span class="n">charArray</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'a'</span><span class="p">,</span> <span class="sc">'b'</span><span class="p">,</span> <span class="sc">'c'</span><span class="p">,</span> <span class="sc">'d'</span><span class="p">,</span> <span class="sc">'e'</span><span class="p">};</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The second element in charArray is: "</span> <span class="o">+</span> <span class="n">charArray</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
-        
-        <span class="c1">// Converting int example to Integer wrapper class using array</span>
-        <span class="n">Integer</span><span class="o">[]</span> <span class="n">integerArray</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">[</span><span class="n">intArray</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">intArray</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">integerArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">intArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The third element in integerArray is: "</span> <span class="o">+</span> <span class="n">integerArray</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
-        
-        <span class="c1">// Converting double example to Double wrapper class using array</span>
-        <span class="n">Double</span><span class="o">[]</span> <span class="n">doubleArray</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Double</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
-        <span class="n">doubleArray</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">randomNumber</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Random number in Double wrapper class: "</span> <span class="o">+</span> <span class="n">doubleArray</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
-        
-        <span class="c1">// Converting boolean example to Boolean wrapper class using array</span>
-        <span class="n">Boolean</span><span class="o">[]</span> <span class="n">booleanArray</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Boolean</span><span class="o">[</span><span class="n">boolArray</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">boolArray</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">booleanArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">boolArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The fourth element in booleanArray is: "</span> <span class="o">+</span> <span class="n">booleanArray</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
-        
-        <span class="c1">// Converting char example to Character wrapper class using array</span>
-        <span class="n">Character</span><span class="o">[]</span> <span class="n">characterArray</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Character</span><span class="o">[</span><span class="n">charArray</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">charArray</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">characterArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Character</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The second element in characterArray is: "</span> <span class="o">+</span> <span class="n">characterArray</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">String</span> <span class="n">str</span><span class="o">=</span><span class="s">"Byte val:"</span><span class="o">+</span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span>
+        <span class="s">"\n Short val:"</span><span class="o">+</span><span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]+</span>
+        <span class="s">"\n Int val:"</span><span class="o">+</span><span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="o">]+</span>
+        <span class="s">"\n Float val:"</span><span class="o">+</span><span class="n">arr1</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span>
+        <span class="s">"\n double val:"</span><span class="o">+</span><span class="n">arr1</span><span class="o">[</span><span class="mi">1</span><span class="o">]+</span>
+        <span class="s">"\n boolean val1:"</span><span class="o">+</span><span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span>
+        <span class="s">"\n boolean val2:"</span><span class="o">+</span><span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">]+</span>
+        <span class="s">"\n char val:"</span><span class="o">+</span><span class="n">ch</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">byte</span> <span class="n">a1</span><span class="o">=</span><span class="mi">123</span><span class="p">;</span>
+        <span class="kt">short</span> <span class="n">a2</span><span class="o">=</span><span class="mi">32000</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">a3</span><span class="o">=</span><span class="mi">2147300200</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">f</span><span class="o">=</span><span class="mf">3.4f</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.8e+200</span><span class="p">;</span>
+        <span class="kt">boolean</span> <span class="n">b1</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+        <span class="kt">boolean</span> <span class="n">b2</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">ch</span><span class="o">=</span><span class="sc">'F'</span><span class="p">;</span>
+        <span class="n">Conversions</span> <span class="n">cc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Conversions</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">b1</span><span class="p">,</span><span class="n">b2</span><span class="p">,</span><span class="n">ch</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">cc</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"With Wrapper classes"</span><span class="p">);</span>
+        <span class="n">cc</span><span class="p">.</span><span class="na">defineWrapper</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">b1</span><span class="p">,</span><span class="n">b2</span><span class="p">,</span><span class="n">ch</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="n">PrimitiveTypes</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="n">Conversions</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Byte val:123
+ Short val:32000
+ Int val:2147300200
+ Float val:3.4000000953674316
+ double val:1.8E200
+ boolean val1:true
+ boolean val2:false
+ char val:F
+With Wrapper classes
+Byte val:123
+ Short val:32000
+ Int val:2147300200
+ Float val:3.4000000953674316
+ double val:1.8E200
+ boolean val1:true
+ boolean val2:false
+ char val:F
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
