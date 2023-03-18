@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Generic Types and collections | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Generic Types and collections" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="types and collectiosn" />
+<meta property="og:description" content="types and collectiosn" />
+<link rel="canonical" href="https://paulman420.github.io/KurtisFP/jupyter/2023/03/17/types.html" />
+<meta property="og:url" content="https://paulman420.github.io/KurtisFP/jupyter/2023/03/17/types.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-03-17T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Generic Types and collections" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-03-17T00:00:00-05:00","datePublished":"2023-03-17T00:00:00-05:00","description":"types and collectiosn","headline":"Generic Types and collections","mainEntityOfPage":{"@type":"WebPage","@id":"https://paulman420.github.io/KurtisFP/jupyter/2023/03/17/types.html"},"url":"https://paulman420.github.io/KurtisFP/jupyter/2023/03/17/types.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/KurtisFP/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://paulman420.github.io/KurtisFP/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/KurtisFP/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/KurtisFP/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/KurtisFP/about/">About Me</a><a class="page-link" href="/KurtisFP/cb/">College Board</a><a class="page-link" href="/KurtisFP/search/">Search</a><a class="page-link" href="/KurtisFP/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Generic Types and collections</h1><p class="page-description">types and collectiosn</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-03-17T00:00:00-05:00" itemprop="datePublished">
+        Mar 17, 2023
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/KurtisFP/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/paulman420/KurtisFP/tree/master/_notebooks/2023-03-17-types.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/KurtisFP/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/paulman420/KurtisFP/master?filepath=_notebooks%2F2023-03-17-types.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/KurtisFP/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/paulman420/KurtisFP/blob/master/_notebooks/2023-03-17-types.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/KurtisFP/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fpaulman420%2FKurtisFP%2Fblob%2Fmaster%2F_notebooks%2F2023-03-17-types.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/KurtisFP/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Example-Code-for-Linked-List,-Queues,-Stacks">Example Code for Linked List, Queues, Stacks </a></li>
+<li class="toc-entry toc-h2"><a href="#Linked-Lists">Linked Lists </a></li>
+<li class="toc-entry toc-h2"><a href="#Queue-and-how-its-printing-the-que">Queue and how its printing the que </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Code-Hack-challenges">Code Hack challenges </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2023-03-17-types.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Generic Types Hacks:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-Code-for-Linked-List,-Queues,-Stacks">
+<a class="anchor" href="#Example-Code-for-Linked-List,-Queues,-Stacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Code for Linked List, Queues, Stacks<a class="anchor-link" href="#Example-Code-for-Linked-List,-Queues,-Stacks"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Linked-Lists">
+<a class="anchor" href="#Linked-Lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linked Lists<a class="anchor-link" href="#Linked-Lists"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Queue-and-how-its-printing-the-que">
+<a class="anchor" href="#Queue-and-how-its-printing-the-que" aria-hidden="true"><span class="octicon octicon-link"></span></a>Queue and how its printing the que<a class="anchor-link" href="#Queue-and-how-its-printing-the-que"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="c1">// Adding elements to the queue</span>
+<span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"apple"</span><span class="p">);</span>
+<span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"banana"</span><span class="p">);</span>
+<span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"cherry"</span><span class="p">);</span>
+
+<span class="n">Object</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="na">toArray</span><span class="p">();</span>
+
+<span class="c1">// Empty queue</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Empty Queue"</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// Interate while size</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="na">remove</span><span class="p">());</span>
+
+<span class="c1">// Iterate of array</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Iterate over Array"</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">Object</span> <span class="n">a</span> <span class="p">:</span> <span class="n">arr</span><span class="p">)</span> <span class="c1">// Type is Object from convertion</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Empty Queue
+apple
+banana
+cherry
+Iterate over Array
+apple
+banana
+cherry
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Code-Hack-challenges">
+<a class="anchor" href="#Code-Hack-challenges" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Hack challenges<a class="anchor-link" href="#Code-Hack-challenges"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">prevNode</span><span class="p">,</span> <span class="n">nextNode</span><span class="p">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Constructs a new element</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param  data, data of object</span>
+<span class="cm">     * @param  node, previous node</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">LinkedList</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">,</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setData</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setPrevNode</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setNextNode</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Clone an object,</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param  node  object to clone</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">LinkedList</span><span class="p">(</span><span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setData</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">data</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setPrevNode</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">prevNode</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setNextNode</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">nextNode</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Setter for T data in DoubleLinkedNode object</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param  data, update data of object</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setData</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Returns T data for this element</span>
+<span class="cm">     *</span>
+<span class="cm">     * @return  data associated with object</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">T</span> <span class="nf">getData</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Setter for prevNode in DoubleLinkedNode object</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param node, prevNode to current Object</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPrevNode</span><span class="p">(</span><span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">prevNode</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Setter for nextNode in DoubleLinkedNode object</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param node, nextNode to current Object</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNextNode</span><span class="p">(</span><span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">nextNode</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Returns reference to previous object in list</span>
+<span class="cm">     *</span>
+<span class="cm">     * @return  the previous object in the list</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">getPrevious</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">prevNode</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     *  Returns reference to next object in list</span>
+<span class="cm">     *</span>
+<span class="cm">     * @return  the next object in the list</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">getNext</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">nextNode</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>  <span class="c1">// create a new empty list</span>
+    
+        <span class="c1">// add some values</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">node1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">node2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">node3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">node4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+    
+        <span class="n">head</span><span class="p">.</span><span class="na">setNextNode</span><span class="p">(</span><span class="n">node1</span><span class="p">);</span> <span class="c1">// set the head's nextNode to the first node</span>
+        <span class="n">node1</span><span class="p">.</span><span class="na">setNextNode</span><span class="p">(</span><span class="n">node2</span><span class="p">);</span>
+        <span class="n">node2</span><span class="p">.</span><span class="na">setNextNode</span><span class="p">(</span><span class="n">node3</span><span class="p">);</span>
+        <span class="n">node3</span><span class="p">.</span><span class="na">setNextNode</span><span class="p">(</span><span class="n">node4</span><span class="p">);</span>
+    
+        <span class="c1">// print out the values</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">current</span> <span class="o">=</span> <span class="n">head</span><span class="p">.</span><span class="na">getNext</span><span class="p">();</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">current</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">current</span><span class="p">.</span><span class="na">getData</span><span class="p">());</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="p">.</span><span class="na">getNext</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    
+<span class="p">}</span>
+<span class="n">LinkedList</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10
+20
+30
+40
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Driver Class</span>
+<span class="cm"> * Tests queue with string, integers, and mixes of Classes and types</span>
+<span class="cm"> */</span>
+<span class="kd">class</span> <span class="nc">QueueTester</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Create iterable Queue of Words</span>
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="p">{</span> <span class="s">"seven"</span><span class="p">,</span> <span class="s">"slimy"</span><span class="p">,</span> <span class="s">"snakes"</span><span class="p">,</span> <span class="s">"sallying"</span><span class="p">,</span> <span class="s">"slowly"</span><span class="p">,</span> <span class="s">"slithered"</span><span class="p">,</span> <span class="s">"southward"</span><span class="p">};</span>
+        <span class="n">QueueManager</span> <span class="n">qWords</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueManager</span><span class="p">(</span><span class="s">"Words"</span><span class="p">,</span> <span class="n">words</span> <span class="p">);</span>
+        <span class="n">qWords</span><span class="p">.</span><span class="na">printQueue</span><span class="p">();</span>
+        <span class="n">Queue</span><span class="p">.</span><span class="na">delete</span>
+
+        <span class="c1">// Create iterable Queue of Integers</span>
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+        <span class="n">QueueManager</span> <span class="n">qNums</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueManager</span><span class="p">(</span><span class="s">"Integers"</span><span class="p">,</span> <span class="n">numbers</span> <span class="p">);</span>
+        <span class="n">qNums</span><span class="p">.</span><span class="na">printQueue</span><span class="p">();</span>
+
+        <span class="c1">// Create iterable Queue of NCS Generics</span>
+        
+        <span class="c1">// Illustrates use of a series of repeating arguments</span>
+        
+
+        <span class="c1">// Create iterable Queue of Mixed types of data</span>
+        
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">QueueTester</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Words count: 7
+Words data: seven slimy snakes sallying slowly slithered southward 
+Integers count: 10
+Integers data: 0 1 2 3 4 5 6 7 8 9 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="paulman420/KurtisFP"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/KurtisFP/jupyter/2023/03/17/types.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/KurtisFP/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://paulman420.github.io/KurtisFP/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+  <a rel="me" href="https://github.com/nighthawkcoders" target="_blank" title="github">
+    <svg class="svg-icon grey">
+      <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://twitter.com/NighthawkCoding" target="_blank" title="twitter">
+    <svg class="svg-icon grey">
+      <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#twitter"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://www.youtube.com/channel/UClIKOsDS5dsfzFA3zveDT3Q" target="_blank" title="youtube">
+    <svg class="svg-icon grey">
+      <use xlink:href="/KurtisFP/assets/minima-social-icons.svg#youtube"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
