@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "Title",
-            "content": "&gt; loops - toc: true - badges: true - comments: true - categories: [jupyter] - image: .",
-            "url": "https://paulman420.github.io/KurtisFP/2023/03/21/loops.html",
-            "relUrl": "/2023/03/21/loops.html",
+            "title": "Loops",
+            "content": "Bubble Sort . public class BubbleSort { public static void bubbleSort(int[] arr) { int n = arr.length; for (int i = 0; i &lt; n - 1; i++) { for (int j = 0; j &lt; n - i - 1; j++) { if (arr[j] &gt; arr[j + 1]) { int temp = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = temp; } } } } public static void main(String[] args) { int[] arr = { 64, 34, 25, 12, 22, 11, 90 }; bubbleSort(arr); System.out.println(&quot;Sorted array: &quot;); for (int i = 0; i &lt; arr.length; i++) { System.out.print(arr[i] + &quot; &quot;); } } } BubbleSort.main(null); . Sorted array: 11 12 22 25 34 64 90 . Selection Sort . public class SelectionSort { public static void selectionSort(int[] arr) { int n = arr.length; for (int i = 0; i &lt; n - 1; i++) { int minIndex = i; for (int j = i + 1; j &lt; n; j++) { if (arr[j] &lt; arr[minIndex]) { minIndex = j; } } int temp = arr[minIndex]; arr[minIndex] = arr[i]; arr[i] = temp; } } public static void main(String[] args) { int[] arr = {64, 34, 25, 12, 22, 11, 90}; selectionSort(arr); System.out.println(Arrays.toString(arr)); } } SelectionSort.main(null); . [11, 12, 22, 25, 34, 64, 90] . Insertion Sort . public class . Merge Sort .",
+            "url": "https://paulman420.github.io/KurtisFP/jupyter/2023/03/21/loops.html",
+            "relUrl": "/jupyter/2023/03/21/loops.html",
             "date": " • Mar 21, 2023"
         }
         
