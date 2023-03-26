@@ -135,6 +135,8 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Code-Hack-challenges">Code Hack challenges </a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#Queue?">Queue? </a></li>
+<li class="toc-entry toc-h2"><a href="#Stack-Hacks">Stack Hacks </a></li>
 </ul>
 </li>
 </ul><!--
@@ -506,20 +508,20 @@ Z
 	<span class="c1">// Class data</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="n">KeyTypes</span> <span class="n">key</span> <span class="o">=</span> <span class="n">KeyType</span><span class="p">.</span><span class="na">title</span><span class="p">;</span>  <span class="c1">// static initializer</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setOrder</span><span class="p">(</span><span class="n">KeyTypes</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span><span class="n">Grade</span><span class="p">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">;}</span>
-	<span class="kd">public</span> <span class="kd">enum</span> <span class="n">KeyType</span> <span class="kd">implements</span> <span class="n">KeyTypes</span> <span class="p">{</span><span class="n">title</span><span class="p">,</span> <span class="n">flavor</span><span class="p">,</span> <span class="n">frosting</span><span class="p">,</span> <span class="n">sprinkles</span><span class="p">}</span>
+	<span class="kd">public</span> <span class="kd">enum</span> <span class="n">KeyType</span> <span class="kd">implements</span> <span class="n">KeyTypes</span> <span class="p">{</span><span class="n">title</span><span class="p">,</span> <span class="n">frq</span><span class="p">,</span> <span class="n">frosting</span><span class="p">,</span> <span class="n">sprinkles</span><span class="p">}</span>
 
 	<span class="c1">// Instance data</span>
 	<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">frosting</span><span class="p">;</span>
 	<span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">sprinkles</span><span class="p">;</span>
-	<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">flavor</span><span class="p">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">frq</span><span class="p">;</span>
 
 	<span class="c1">// Constructor</span>
-	<span class="n">Grade</span><span class="p">(</span><span class="n">String</span> <span class="n">frosting</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sprinkles</span><span class="p">,</span> <span class="n">String</span> <span class="n">flavor</span><span class="p">)</span>
+	<span class="n">Grade</span><span class="p">(</span><span class="n">String</span> <span class="n">frosting</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sprinkles</span><span class="p">,</span> <span class="n">String</span> <span class="n">frq</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="k">this</span><span class="p">.</span><span class="na">setType</span><span class="p">(</span><span class="s">"Grade"</span><span class="p">);</span>
 		<span class="k">this</span><span class="p">.</span><span class="na">frosting</span> <span class="o">=</span> <span class="n">frosting</span><span class="p">;</span>
 		<span class="k">this</span><span class="p">.</span><span class="na">sprinkles</span> <span class="o">=</span> <span class="n">sprinkles</span><span class="p">;</span>
-		<span class="k">this</span><span class="p">.</span><span class="na">flavor</span> <span class="o">=</span> <span class="n">flavor</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">frq</span> <span class="o">=</span> <span class="n">frq</span><span class="p">;</span>
 	<span class="p">}</span>
 
 	<span class="cm">/* 'Generics' requires getKey to help enforce KeyTypes usage */</span>
@@ -532,15 +534,15 @@ Z
 	<span class="nd">@Override</span>
 	<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>		
 		<span class="n">String</span> <span class="n">output</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
-		<span class="k">if</span> <span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">flavor</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">getKey</span><span class="p">()))</span> <span class="p">{</span>
-			<span class="n">output</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="na">flavor</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">frq</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">getKey</span><span class="p">()))</span> <span class="p">{</span>
+			<span class="n">output</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="na">frq</span><span class="p">;</span>
 		<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">frosting</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">getKey</span><span class="p">()))</span> <span class="p">{</span>
 			<span class="n">output</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="na">frosting</span><span class="p">;</span>
 		<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">sprinkles</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">getKey</span><span class="p">()))</span> <span class="p">{</span>
 			<span class="n">output</span> <span class="o">+=</span> <span class="s">"00"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">sprinkles</span><span class="p">;</span>
 			<span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
 		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-			<span class="n">output</span> <span class="o">=</span> <span class="kd">super</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">flavor</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">frosting</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">sprinkles</span><span class="p">;</span>
+			<span class="n">output</span> <span class="o">=</span> <span class="kd">super</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">frq</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">frosting</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">sprinkles</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">return</span> <span class="n">output</span><span class="p">;</span>
 	<span class="p">}</span>
@@ -566,7 +568,7 @@ Z
 		<span class="n">Grade</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">objs</span><span class="p">);</span>
 
 		<span class="c1">// print flavor only</span>
-		<span class="n">Grade</span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">flavor</span><span class="p">);</span>
+		<span class="n">Grade</span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">frq</span><span class="p">);</span>
 		<span class="n">Grade</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">objs</span><span class="p">);</span>
 	<span class="p">}</span>
 	
@@ -584,16 +586,16 @@ Z
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>class [LREPL.$JShell$21D$Grade; 4
+<pre>class [LREPL.$JShell$21F$Grade; 4
 Generic: Grade listed by title
-Grade: DIdn't use loop, FRQ1, 40
+Grade: Didn't use loop, FRQ1, 40
 Grade: result was non-boolean, FRQ2, 50
 Grade: didn't initialize counter, FRQ3, 60
 Grade: Bad Syntax, FRQ4, 70
 
-class [LREPL.$JShell$21D$Grade; 4
-Generic: Grade listed by flavor
-DIdn't use loop
+class [LREPL.$JShell$21F$Grade; 4
+Generic: Grade listed by frq
+Didn't use loop
 result was non-boolean
 didn't initialize counter
 Bad Syntax
@@ -614,6 +616,17 @@ Bad Syntax
 <h3 id="Code-Hack-challenges">
 <a class="anchor" href="#Code-Hack-challenges" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Hack challenges<a class="anchor-link" href="#Code-Hack-challenges"> </a>
 </h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Queue?">
+<a class="anchor" href="#Queue?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Queue?<a class="anchor-link" href="#Queue?"> </a>
+</h2>
+<p>is a linked list really a queue?</p>
+
 </div>
 </div>
 </div>
@@ -773,6 +786,67 @@ Bad Syntax
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueueExample</span> <span class="p">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+      <span class="c1">// Adding elements to the queue</span>
+      <span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"John"</span><span class="p">);</span>
+      <span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Sarah"</span><span class="p">);</span>
+      <span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Michael"</span><span class="p">);</span>
+      <span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"David"</span><span class="p">);</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+
+      <span class="c1">// Printing and removing all elements in the queue</span>
+      <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">queue</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+         <span class="n">String</span> <span class="n">element</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="na">remove</span><span class="p">();</span>
+         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+
+         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Removed element: "</span> <span class="o">+</span> <span class="n">element</span><span class="p">);</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">QueueExample</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[John, Sarah, Michael, David]
+[Sarah, Michael, David]
+Removed element: John
+[Michael, David]
+Removed element: Sarah
+[David]
+Removed element: Michael
+[]
+Removed element: David
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Driver Class</span>
 <span class="cm"> * Tests queue with string, integers, and mixes of Classes and types</span>
@@ -817,6 +891,65 @@ Bad Syntax
 Words data: seven slimy snakes sallying slowly slithered southward 
 Integers count: 10
 Integers data: 0 1 2 3 4 5 6 7 8 9 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Stack-Hacks">
+<a class="anchor" href="#Stack-Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Stack Hacks<a class="anchor-link" href="#Stack-Hacks"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Stack</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StackExample</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">//pushes the integer into the bottom of the stack</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"popped element "</span> <span class="o">+</span> <span class="n">stack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span> <span class="c1">// prints 3, pops 3</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"popped element "</span> <span class="o">+</span> <span class="n">stack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"popped element "</span> <span class="o">+</span><span class="n">stack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span> <span class="c1">// prints 1</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">empty</span><span class="p">());</span> <span class="c1">// prints false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">StackExample</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3]
+popped element 3
+popped element 2
+popped element 1
+true
 </pre>
 </div>
 </div>
