@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      6 min read
     
 </span></p>
 
@@ -302,6 +302,16 @@ sorted queue: [David, John, Michael, Sarah]
         <span class="p">}</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">bubbleArr</span> <span class="o">=</span> <span class="n">bubblesort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">selectionArr</span> <span class="o">=</span> <span class="n">selectionsort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">insertionArr</span> <span class="o">=</span> <span class="n">insertionsort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+
+
+        <span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">mergeArr</span> <span class="o">=</span> <span class="n">mergeSort</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+        
+        <span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">totalTime</span> <span class="o">=</span> <span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Time taken to sort merge array: "</span> <span class="o">+</span> <span class="n">totalTime</span> <span class="o">+</span> <span class="s">" milliseconds"</span><span class="p">);</span>
 
         <span class="c1">// Print sorted arrays</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Bubble sorted array:"</span><span class="p">);</span>
@@ -382,8 +392,72 @@ sorted queue: [David, John, Michael, Sarah]
     
         <span class="k">return</span> <span class="n">sortedArr</span><span class="p">;</span>
     <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">insertionsort</span><span class="p">(</span><span class="n">Integer</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">compariso</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">swaps</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">sortedArr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//j is the array element before i</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//while j is not 0, and array at j is greater than the current</span>
+                <span class="n">arr</span><span class="o">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">;</span> <span class="c1">//move j up</span>
+                <span class="n">j</span><span class="o">--</span><span class="p">;</span> <span class="c1">//</span>
+                <span class="n">swaps</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span> <span class="c1">//put key back</span>
+        <span class="p">}</span>
     
+        <span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">totalTime</span> <span class="o">=</span> <span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Time taken to sort insertion array: "</span> <span class="o">+</span> <span class="n">totalTime</span> <span class="o">+</span> <span class="s">" milliseconds"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"swaps and comparisons for insertion: "</span> <span class="o">+</span> <span class="n">swaps</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">sortedArr</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">mergeSort</span><span class="p">(</span><span class="n">Integer</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">comparisons</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">swaps</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
     
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// recursively splits  the array into two halves</span>
+            <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">Integer</span><span class="o">[]</span> <span class="n">left</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">copyOfRange</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mid</span><span class="p">);</span>
+            <span class="n">Integer</span><span class="o">[]</span> <span class="n">right</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">copyOfRange</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+    
+            <span class="c1">// Recursively sort each half</span>
+            <span class="n">mergeSort</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+            <span class="n">mergeSort</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+    
+            <span class="c1">// Merge the sorted halves</span>
+            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">left</span><span class="p">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">.</span><span class="na">length</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">comparisons</span><span class="o">++</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">left</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">++]</span> <span class="o">=</span> <span class="n">left</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">++]</span> <span class="o">=</span> <span class="n">right</span><span class="o">[</span><span class="n">j</span><span class="o">++]</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">swaps</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">left</span><span class="p">.</span><span class="na">length</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//keeps comparing the arrays</span>
+                <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">++]</span> <span class="o">=</span> <span class="n">left</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span><span class="p">;</span>
+                <span class="n">swaps</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">.</span><span class="na">length</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//keeps comparing array</span>
+                <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">++]</span> <span class="o">=</span> <span class="n">right</span><span class="o">[</span><span class="n">j</span><span class="o">++]</span><span class="p">;</span>
+                <span class="n">swaps</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+      
+
+
+        <span class="k">return</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">stream</span><span class="p">(</span><span class="n">arr</span><span class="p">).</span><span class="na">mapToInt</span><span class="p">(</span><span class="n">Integer</span><span class="p">::</span><span class="n">intValue</span><span class="p">).</span><span class="na">toArray</span><span class="p">();</span>
+
+    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">HashTester</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
@@ -402,13 +476,15 @@ sorted queue: [David, John, Michael, Sarah]
 <pre>Value for key 2: 2
 Found key 42 with value 42
 Time taken to search array: 0 milliseconds
-Value for key 2 in sorts method: 2
-number of swaps for bubble: 6309038
+number of swaps for bubble: 6230004
 nnumber of comparisons in bubble sort: 12497500
-Time taken to sort binary array: 31 milliseconds
-comparisons in selection sort: 34868
+Time taken to sort binary array: 28 milliseconds
+comparisons in selection sort: 34615
 swaps in selection sort: 4999
-Time taken to sort selection array: 6 milliseconds
+Time taken to sort selection array: 10 milliseconds
+Time taken to sort insertion array: 18 milliseconds
+swaps and comparisons for insertion: 6230004
+Time taken to sort merge array: 2 milliseconds
 Bubble sorted array:
 Selection sorted array:
 </pre>
