@@ -85,11 +85,6 @@ html_escape:
 
 # Everything below here should be left alone. Modifications may break fastpages
 future: true
-title: Leap Day theme
-description: Leap Day is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-leap-day
 plugins:
   - jekyll-feed
   - jekyll-gist
