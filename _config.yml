@@ -37,12 +37,16 @@ url: "https://paulman420.github.io" # the base hostname & protocol for your site
 baseurl: "/KurtisFP" # the subpath of your site, e.g. "/blog".
 
 # Github and twitter are optional:
-title: Leap Day theme
-description: Leap Day is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-leap-day
-
+minima:
+  skin: light
+  #  social_links:
+  #    twitter: NighthawkCoding
+  #    github: nighthawkcoders
+  #   youtube_channel: UClIKOsDS5dsfzFA3zveDT3Q
+  social_links:
+    - { platform: github, user_url: "https://github.com/nighthawkcoders"}
+    - { platform: twitter, user_url: "https://twitter.com/NighthawkCoding"}
+    - { platform: youtube, user_url: "https://www.youtube.com/channel/UClIKOsDS5dsfzFA3zveDT3Q"}
 
 
 # Set this to true to get LaTeX math equation support
@@ -85,6 +89,7 @@ html_escape:
 
 # Everything below here should be left alone. Modifications may break fastpages
 future: true
+theme: minima
 plugins:
   - jekyll-feed
   - jekyll-gist
@@ -103,7 +108,7 @@ plugins:
 paginate: 15
 paginate_path: /page:num/
 
-remote_theme: jekyll/light
+remote_theme: jekyll/minima
 
 titles_from_headings:
   enabled:     true
