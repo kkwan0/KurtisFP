@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      3 min read
     
 </span></p>
 
@@ -170,64 +170,187 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">cookie</span> <span class="o">=</span> <span class="s2">&quot;username=John Doe&quot;</span><span class="p">;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">cookie</span> <span class="o">=</span> <span class="s2">&quot;cookiename=value1&quot;</span><span class="p">;</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
+</div>
+    
 
-<div class="output_area">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-Cookies">Creating Cookies<a class="anchor-link" href="#Creating-Cookies"> </a></h3><p>The "cookiename" is the name of the cookie, and the "value1" is the value of the cookie. However, by default, the session will delete the cookie when you close the browser. In order to stop this, a expiration date is needed.</p>
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">Failed to start the Kernel. 
-</span>
-<span class="ansi-red-intense-fg ansi-bold">/usr/local/lib/node_modules/ijavascript/node_modules/node-gyp-build/node-gyp-build.js:60
-</span>
-<span class="ansi-red-intense-fg ansi-bold">  throw new Error(&#39;No native build was found for &#39; + target + &#39;\n    loaded from: &#39; + dir + &#39;\n&#39;)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">  ^
-</span>
-<span class="ansi-red-intense-fg ansi-bold">
-</span>
-<span class="ansi-red-intense-fg ansi-bold">Error: No native build was found for platform=darwin arch=x64 runtime=electron abi=108 uv=1 libc=glibc node=18.16.0
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    loaded from: /usr/local/lib/node_modules/ijavascript/node_modules/zeromq
-</span>
-<span class="ansi-red-intense-fg ansi-bold">
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at load.resolve.load.path (/usr/local/lib/node_modules/ijavascript/node_modules/node-gyp-build/node-gyp-build.js:60:9)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at load (/usr/local/lib/node_modules/ijavascript/node_modules/node-gyp-build/node-gyp-build.js:22:30)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/ijavascript/node_modules/zeromq/binding.js:1:43)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Module._compile (node:internal/modules/cjs/loader:1254:14)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Module.load (node:internal/modules/cjs/loader:1117:32)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Module._load (node:internal/modules/cjs/loader:958:12)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Module.require (node:internal/modules/cjs/loader:1141:19)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at require (node:internal/modules/cjs/helpers:110:18)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/ijavascript/node_modules/zeromq/lib/index.js:6:11)
-</span>
-<span class="ansi-red-intense-fg ansi-bold">
-</span>
-<span class="ansi-red-intense-fg ansi-bold">Node.js v18.16.0. 
-</span>
-<span class="ansi-red-intense-fg ansi-bold">View Jupyter &lt;a href=&#39;command:jupyter.viewOutput&#39;&gt;log&lt;/a&gt; for further details.</span></pre>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">cookie</span> <span class="o">=</span> <span class="s2">&quot;cookiename=value1; expires=Thu, 18 Dec 2038 12:00:00 UTC&quot;</span><span class="p">;</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reading-Cookies">Reading Cookies<a class="anchor-link" href="#Reading-Cookies"> </a></h3><p>A variable can be set to the name and the value of the cookie. In this example, the name, value, and the expiration date are all variables.</p>
+<p>When a variable is set to document.cookie, it will return all cookies in the way of "cookie1=value1; cookie2=value2;" and so on.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">cookie</span> <span class="o">=</span> <span class="n">cookieName</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="n">cookieValue</span> <span class="o">+</span> <span class="s1">&#39;; expires=&#39;</span> <span class="o">+</span> <span class="n">daysToExpire</span> <span class="o">+</span> <span class="s1">&#39;;SameSite=None&#39;</span><span class="p">;</span>
+
+<span class="n">var</span> <span class="n">cookieString</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">cookie</span><span class="p">;</span> <span class="o">//</span><span class="n">returns</span> <span class="nb">all</span> <span class="n">cookies</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Deleting-cookies">Deleting cookies<a class="anchor-link" href="#Deleting-cookies"> </a></h3><p>To delete a cookie, just set the expiration date to a time before the current time.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>function deleteCookie(cookieName) {
+      document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-table">Creating a table<a class="anchor-link" href="#Creating-a-table"> </a></h3><p>To create a table containing all the cookie values, you would want to create a for loop that loops through all the values stored. After that, you create a column for the name, and another column for the value.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">var</span> <span class="n">tableBody</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s1">&#39;#tablearr&#39;</span><span class="p">);</span> <span class="o">//</span><span class="n">pushes</span> <span class="n">onto</span> <span class="n">the</span> <span class="n">table</span>
+
+
+<span class="n">function</span> <span class="n">tablegen</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cookies</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">var</span> <span class="n">cookie</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">trim</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">);</span> <span class="o">//</span><span class="n">trim</span> <span class="ow">and</span> <span class="n">split</span> <span class="n">it</span> <span class="n">up</span> <span class="n">before</span> <span class="ow">and</span> <span class="n">after</span> <span class="n">the</span> <span class="n">equal</span> <span class="n">sign</span>
+      <span class="n">var</span> <span class="n">name</span> <span class="o">=</span> <span class="n">cookie</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="o">//</span><span class="n">first</span> <span class="n">half</span>
+      <span class="n">var</span> <span class="n">value</span> <span class="o">=</span> <span class="n">cookie</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="o">//</span><span class="n">second</span> <span class="n">half</span>
+      
+      <span class="n">var</span> <span class="n">row</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
+      <span class="n">var</span> <span class="n">nameCell</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">);</span>
+      <span class="n">nameCell</span><span class="o">.</span><span class="n">textContent</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="n">row</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">nameCell</span><span class="p">);</span> <span class="o">//</span><span class="n">adds</span> <span class="n">the</span> <span class="n">item</span>
+  
+      <span class="n">var</span> <span class="n">valueCell</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">);</span>
+      <span class="n">valueCell</span><span class="o">.</span><span class="n">textContent</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span> <span class="o">//</span><span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cookie</span>
+      <span class="n">row</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">valueCell</span><span class="p">);</span>
+      <span class="n">tableBody</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">row</span><span class="p">);</span>
+      
+      <span class="n">var</span> <span class="n">deleteButtonCell</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">);</span>
+      <span class="n">var</span> <span class="n">deleteButton</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span> <span class="o">//</span><span class="n">the</span> <span class="n">butotn</span>
+      <span class="n">deleteButton</span><span class="o">.</span><span class="n">textContent</span> <span class="o">=</span> <span class="s1">&#39;rmove&#39;</span><span class="p">;</span> <span class="o">//</span><span class="n">text</span> <span class="ow">in</span> <span class="n">button</span>
+      <span class="n">deleteButton</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">deleteCookie</span><span class="p">(</span><span class="n">name</span><span class="p">);</span> <span class="o">//</span><span class="n">functino</span> <span class="n">so</span> <span class="n">that</span> <span class="n">it</span> <span class="n">doesn</span><span class="s1">&#39;t run automatically</span>
+      <span class="p">});</span>
+      <span class="n">deleteButtonCell</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">deleteButton</span><span class="p">);</span>
+      <span class="n">row</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">deleteButtonCell</span><span class="p">);</span> <span class="o">//</span><span class="n">these</span> <span class="mi">2</span> <span class="n">add</span> <span class="n">the</span> <span class="n">button</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table id="tablearr">
+  <!-- Table headers or initial content -->
+  <tr>
+    <th>Session</th>
+    <th>Score</th> 
+    <!-- in this example, there are only 2 columns, but if you wanted to have a third for the delete, just create another <th> tag.  -->
+  </tr>
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="High-Score">High Score<a class="anchor-link" href="#High-Score"> </a></h3><p>In the game, we had a high score function. We just created a cookie highscore, that everytime that the game reset, it would check if the current score was greater than the highscore, in which we replaced the highscore with that score.</p>
+<p>In order to return the high score, we had to have a function that would look for that highscore.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">function</span> <span class="n">getHighScore</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">cookieString</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">cookie</span><span class="p">;</span> <span class="o">//</span><span class="n">returns</span> <span class="nb">all</span> <span class="n">cookies</span>
+    <span class="n">var</span> <span class="n">cookieArray</span> <span class="o">=</span> <span class="n">cookieString</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">);</span> <span class="o">//</span><span class="n">splits</span> <span class="n">by</span> <span class="p">;,</span> <span class="n">so</span> <span class="n">it</span> <span class="n">goes</span> <span class="n">by</span> <span class="n">each</span> <span class="n">cookie</span><span class="o">.</span>
+  
+    <span class="o">//</span> <span class="n">Iterate</span> <span class="n">over</span> <span class="n">each</span> <span class="n">cookie</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cookieArray</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">var</span> <span class="n">cookie</span> <span class="o">=</span> <span class="n">cookieArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">trim</span><span class="p">();</span>
+  
+      <span class="o">//</span> <span class="n">Check</span> <span class="k">if</span> <span class="n">the</span> <span class="n">cookie</span> <span class="n">starts</span> <span class="k">with</span> <span class="n">the</span> <span class="n">provided</span> <span class="n">name</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">cookie</span><span class="o">.</span><span class="n">startsWith</span><span class="p">(</span><span class="s2">&quot;highscore=&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">Extract</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">the</span> <span class="n">cookie</span> <span class="n">value</span>
+        <span class="n">var</span> <span class="n">score</span> <span class="o">=</span> <span class="n">parseInt</span><span class="p">(</span><span class="n">cookie</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="s2">&quot;highscore=&quot;</span><span class="o">.</span><span class="n">length</span><span class="p">));</span>    
+        <span class="k">return</span> <span class="n">score</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+  
+    <span class="o">//</span> <span class="n">Return</span> <span class="n">null</span> <span class="k">if</span> <span class="n">the</span> <span class="n">cookie</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">found</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;notfound&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
