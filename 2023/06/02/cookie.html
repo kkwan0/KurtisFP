@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      9 min read
     
 </span></p>
 
@@ -139,6 +139,322 @@ window.onload = wrap_img;
 <span class="o">-</span> <span class="n">comments</span><span class="p">:</span> <span class="n">true</span>
 <span class="o">-</span> <span class="n">categories</span><span class="p">:</span> <span class="p">[</span><span class="n">jupyter</span><span class="p">]</span>
 <span class="o">-</span> <span class="n">image</span><span class="p">:</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-make-the-game">How to make the game<a class="anchor-link" href="#How-to-make-the-game"> </a></h2><p>The basic html consists of 2 parts. The canvas for the game and the scoring part. The canvas part is put in one div, whereas the scoring is put in another.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;canvas-container&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">canvas</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;game&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;375&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;667&quot;</span><span class="o">&gt;&lt;/</span><span class="n">canvas</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;info-container&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;score&quot;</span><span class="o">&gt;</span><span class="n">Score</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;highestScore&quot;</span><span class="o">&gt;</span><span class="n">Highest</span> <span class="n">Score</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">table</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tablearr&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;!</span>-- Table headers or initial content --&gt;
+        <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">Session</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">Score</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-game-part">The game part<a class="anchor-link" href="#The-game-part"> </a></h2><p>In this game, we need a variable to store the score. The game also requires a canvas to make the doodle move. Then, we need a object for the "doodle", the moving character. We also need an object for the platforms.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Platform</span> <span class="p">{</span> <span class="o">//</span><span class="n">platforms</span>
+    <span class="n">constructor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">get</span> <span class="n">X</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">get</span> <span class="n">Y</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">set</span> <span class="n">X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nb">set</span> <span class="n">Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+<span class="k">class</span> <span class="nc">Doodle</span> <span class="p">{</span> <span class="o">//</span><span class="n">the</span> <span class="n">game</span> <span class="n">character</span>
+<span class="n">constructor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">;</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">;</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">get</span> <span class="n">W</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">width</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">get</span> <span class="n">H</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">height</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">get</span> <span class="n">X</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">get</span> <span class="n">Y</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">set</span> <span class="n">X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">set</span> <span class="n">Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">get</span> <span class="n">Dx</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">dx</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">get</span> <span class="n">Dy</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">dy</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">set</span> <span class="n">Dx</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">set</span> <span class="n">Dy</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">this</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">random</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span><span class="p">;</span> <span class="o">//</span><span class="n">random</span> <span class="n">platforms</span>
+<span class="p">}</span>
+<span class="o">//</span><span class="nb">set</span> <span class="n">values</span> <span class="k">for</span> <span class="n">the</span> <span class="n">platforms</span>
+<span class="n">const</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;game&#39;</span><span class="p">);</span>
+<span class="n">const</span> <span class="n">context</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">width</span> <span class="ow">and</span> <span class="n">height</span> <span class="n">of</span> <span class="n">each</span> <span class="n">platform</span> <span class="ow">and</span> <span class="n">where</span> <span class="n">platforms</span> <span class="n">start</span>
+<span class="n">const</span> <span class="n">platformWidth</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">platformHeight</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">platformStart</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">50</span><span class="p">;</span> <span class="o">//</span><span class="n">platformStart</span> <span class="o">-</span> <span class="mi">617</span>
+<span class="o">//</span> <span class="n">player</span> <span class="n">physics</span>
+<span class="n">const</span> <span class="n">gravity</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">drag</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">bounceVelocity</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.5</span><span class="p">;</span>
+<span class="o">//</span><span class="n">window</span> <span class="n">varible</span>
+<span class="n">var</span> <span class="n">windowId</span> <span class="o">=</span> <span class="n">undefined</span><span class="p">;</span>
+<span class="o">//</span><span class="n">score</span> <span class="n">counter</span> <span class="ow">and</span> <span class="n">variable</span>
+<span class="n">var</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">highscore</span> <span class="o">=</span> <span class="n">getHighScore</span><span class="p">();</span> <span class="o">//</span><span class="n">highscore</span>
+<span class="o">//</span>
+<span class="o">//</span> <span class="n">minimum</span> <span class="ow">and</span> <span class="n">maximum</span> <span class="n">vertical</span> <span class="n">space</span> <span class="n">between</span> <span class="n">each</span> <span class="n">platform</span>
+<span class="n">let</span> <span class="n">minPlatformSpace</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">let</span> <span class="n">maxPlatformSpace</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="o">//*</span> <span class="n">starting</span> <span class="n">adding</span> <span class="n">platforms</span> <span class="n">to</span> <span class="n">the</span> <span class="n">canvas</span> 
+<span class="n">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">platformStart</span><span class="p">;</span>
+<span class="n">let</span> <span class="n">doodlePlatforms</span> <span class="o">=</span> <span class="p">[</span><span class="n">new</span> <span class="n">Platform</span><span class="p">(</span><span class="n">canvas</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">platformWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">platformStart</span><span class="p">)];</span>
+<span class="o">//</span><span class="n">doodle</span> <span class="n">image</span>
+<span class="n">var</span> <span class="n">dimg</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Image</span><span class="p">();</span>
+<span class="n">dimg</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/JasonMize/coding-league-assets/master/doodle-jump-doodler.png&quot;</span><span class="p">;</span>
+<span class="o">//</span><span class="n">platforms</span> <span class="n">image</span>
+<span class="n">var</span> <span class="n">pimg</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Image</span><span class="p">();</span>
+<span class="n">pimg</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;platform3.png&quot;</span><span class="p">;</span>
+<span class="o">//</span><span class="n">background</span> <span class="n">image</span>
+<span class="n">var</span> <span class="n">bimg</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Image</span><span class="p">();</span>
+<span class="n">bimg</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;dbackground(1).png&quot;</span><span class="p">;</span>
+<span class="o">//</span><span class="n">create</span> <span class="n">platforms</span> <span class="n">until</span> <span class="n">y</span> <span class="n">reaches</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">platform</span> <span class="n">can</span> <span class="n">be</span> <span class="n">placed</span> <span class="n">above</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">one</span> <span class="k">with</span> <span class="n">a</span> <span class="n">space</span>
+<span class="o">//</span> <span class="n">somewhere</span> <span class="n">between</span> <span class="n">the</span> <span class="nb">min</span> <span class="ow">and</span> <span class="nb">max</span> <span class="n">space</span>
+<span class="n">y</span> <span class="o">-=</span> <span class="n">platformHeight</span> <span class="o">+</span> <span class="n">random</span><span class="p">(</span><span class="n">minPlatformSpace</span><span class="p">,</span> <span class="n">maxPlatformSpace</span><span class="p">);</span> 
+<span class="o">//</span><span class="n">suppose</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">595</span> <span class="n">when</span> <span class="n">called</span>
+<span class="o">//</span> <span class="n">a</span> <span class="n">platform</span> <span class="n">can</span> <span class="n">be</span> <span class="n">placed</span> <span class="n">anywhere</span> <span class="mi">25</span><span class="n">px</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">left</span> <span class="n">edge</span> <span class="n">of</span> <span class="n">the</span> <span class="n">canvas</span>
+<span class="o">//</span> <span class="ow">and</span> <span class="mi">25</span><span class="n">px</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">right</span> <span class="n">edge</span> <span class="n">of</span> <span class="n">the</span> <span class="n">canvas</span> <span class="p">(</span><span class="n">taking</span> <span class="n">into</span> <span class="n">account</span> <span class="n">platform</span>
+<span class="o">//</span> <span class="n">width</span><span class="p">)</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">however</span> <span class="n">the</span> <span class="n">first</span> <span class="n">few</span> <span class="n">platforms</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">placed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">center</span> <span class="n">so</span>
+<span class="o">//</span> <span class="n">that</span> <span class="n">the</span> <span class="n">player</span> <span class="n">will</span> <span class="n">bounce</span> <span class="n">up</span> <span class="ow">and</span> <span class="n">down</span> <span class="n">without</span> <span class="n">going</span> <span class="n">up</span> <span class="n">the</span> <span class="n">screen</span>
+<span class="o">//</span> <span class="n">until</span> <span class="n">they</span> <span class="n">are</span> <span class="n">ready</span> <span class="n">to</span> <span class="n">move</span>
+<span class="n">let</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">do</span> <span class="p">{</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">25</span> <span class="o">-</span> <span class="n">platformWidth</span><span class="p">);</span> <span class="o">//</span><span class="n">x</span> <span class="o">=</span> <span class="mi">259</span> <span class="n">suppose</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span>
+  <span class="n">y</span> <span class="o">&gt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span>
+  <span class="n">x</span> <span class="o">&gt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">platformWidth</span> <span class="o">*</span> <span class="mf">1.5</span> <span class="o">&amp;&amp;</span>
+  <span class="n">x</span> <span class="o">&lt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">platformWidth</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="p">);</span>
+<span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">new</span> <span class="n">Platform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">let</span> <span class="n">doodle</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Doodle</span><span class="p">(</span><span class="n">canvas</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="n">platformStart</span> <span class="o">-</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">keep</span> <span class="n">track</span> <span class="n">of</span> <span class="n">player</span> <span class="n">direction</span> <span class="ow">and</span> <span class="n">actions</span>
+<span class="n">let</span> <span class="n">playerDir</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">let</span> <span class="n">keydown</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="n">let</span> <span class="n">prevDoodleY</span> <span class="o">=</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span><span class="p">;</span>
+<span class="o">//</span><span class="n">game</span> <span class="n">loop</span>
+<span class="n">function</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">//</span><span class="n">updateScore</span><span class="p">();</span>
+<span class="o">//</span><span class="n">check</span> <span class="k">if</span> <span class="n">the</span> <span class="n">doodle</span> <span class="n">falls</span> <span class="n">off</span>
+<span class="k">if</span><span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">Y</span> <span class="o">&gt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">alert</span><span class="p">(</span><span class="s2">&quot;Doodle fell off, game over!!!!!&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="n">highscore</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">highscore</span> <span class="o">=</span> <span class="n">score</span><span class="p">;</span>
+    <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;highestScore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Highscore: &quot;</span><span class="o">+</span> <span class="n">highscore</span><span class="p">;</span>
+    <span class="n">document</span><span class="o">.</span><span class="n">cookie</span> <span class="o">=</span> <span class="s1">&#39;highscore&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="n">score</span> <span class="o">+</span> <span class="s1">&#39;; expires=&#39;</span> <span class="o">+</span>    <span class="n">daysToExpire</span> <span class="o">+</span> <span class="s1">&#39;;SameSite=None&#39;</span><span class="p">;</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">highscore</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Score: &quot;</span><span class="o">+</span><span class="n">score</span><span class="p">;</span>
+  <span class="n">cancelAnimationFrame</span><span class="p">(</span><span class="n">windowId</span><span class="p">);</span> 
+  <span class="n">createNewCookie</span><span class="p">();</span>
+  <span class="n">location</span><span class="o">.</span><span class="n">reload</span><span class="p">();</span>       
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">windowId</span> <span class="o">=</span> <span class="n">undefined</span><span class="p">;</span>
+<span class="n">requestAnimationFrame</span><span class="p">(</span><span class="n">loop</span><span class="p">);</span>
+<span class="o">//</span><span class="n">context</span><span class="o">.</span><span class="n">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">canvas</span><span class="o">.</span><span class="n">width</span><span class="p">,</span><span class="n">canvas</span><span class="o">.</span><span class="n">height</span><span class="p">);</span>
+<span class="o">//</span><span class="n">drawing</span> <span class="n">background</span> <span class="kn">from</span> <span class="nn">image</span>
+<span class="n">context</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">bimg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span><span class="p">,</span><span class="n">canvas</span><span class="o">.</span><span class="n">height</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">apply</span> <span class="n">gravity</span> <span class="n">to</span> <span class="n">doodle</span>
+<span class="n">doodle</span><span class="o">.</span><span class="n">Dy</span> <span class="o">+=</span> <span class="n">gravity</span><span class="p">;</span>
+<span class="o">//</span> <span class="k">if</span> <span class="n">doodle</span> <span class="n">reaches</span> <span class="n">the</span> <span class="n">middle</span> <span class="n">of</span> <span class="n">the</span> <span class="n">screen</span><span class="p">,</span> <span class="n">move</span> <span class="n">the</span> <span class="n">platforms</span> <span class="n">down</span>
+<span class="o">//</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">doodle</span> <span class="n">up</span> <span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="n">look</span> <span class="n">like</span> <span class="n">doodle</span> <span class="ow">is</span> <span class="n">going</span> <span class="n">up</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">Y</span> <span class="o">&lt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Dy</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">forEach</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">platform</span><span class="o">.</span><span class="n">Y</span> <span class="o">+=</span> <span class="o">-</span><span class="n">doodle</span><span class="o">.</span><span class="n">Dy</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="o">//</span> <span class="n">add</span> <span class="n">more</span> <span class="n">platforms</span> <span class="n">to</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="n">the</span> <span class="n">screen</span> <span class="k">as</span> <span class="n">doodle</span> <span class="n">moves</span> <span class="n">up</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">doodlePlatforms</span><span class="p">[</span><span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">new</span> <span class="n">Platform</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">25</span> <span class="o">-</span> <span class="n">platformWidth</span><span class="p">),</span><span class="n">doodlePlatforms</span><span class="p">[</span><span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Y</span> <span class="o">-</span> <span class="p">(</span><span class="n">platformHeight</span> <span class="o">+</span> <span class="n">random</span><span class="p">(</span><span class="n">minPlatformSpace</span><span class="p">,</span> <span class="n">maxPlatformSpace</span><span class="p">))));</span>
+    <span class="n">score</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Score: &quot;</span><span class="o">+</span><span class="n">score</span><span class="p">;</span>
+    <span class="o">//</span> <span class="n">add</span> <span class="n">a</span> <span class="n">bit</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">min</span><span class="o">/</span><span class="nb">max</span> <span class="n">platform</span> <span class="n">space</span> <span class="k">as</span> <span class="n">the</span> <span class="n">player</span> <span class="n">goes</span> <span class="n">up</span>
+    <span class="n">minPlatformSpace</span> <span class="o">+=</span> <span class="mf">0.5</span><span class="p">;</span>
+    <span class="n">maxPlatformSpace</span> <span class="o">+=</span> <span class="mf">0.5</span><span class="p">;</span>
+    <span class="o">//</span> <span class="n">cap</span> <span class="nb">max</span> <span class="n">space</span>
+    <span class="n">maxPlatformSpace</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">maxPlatformSpace</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+  <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Dy</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">only</span> <span class="n">apply</span> <span class="n">drag</span> <span class="n">to</span> <span class="n">horizontal</span> <span class="n">movement</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">pressed</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span>keydown<span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">playerDir</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">+=</span> <span class="n">drag</span><span class="p">;</span>
+    <span class="o">//</span> <span class="n">don</span><span class="s1">&#39;t let dx go above 0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">playerDir</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">playerDir</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">-=</span> <span class="n">drag</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">playerDir</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">+=</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">make</span> <span class="n">doodle</span> <span class="n">wrap</span> <span class="n">the</span> <span class="n">screen</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">doodle</span><span class="o">.</span><span class="n">W</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">&gt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="o">-</span><span class="n">doodle</span><span class="o">.</span><span class="n">W</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">draw</span> <span class="n">platforms</span>
+<span class="n">context</span><span class="o">.</span><span class="n">fillStyle</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">;</span>
+<span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">forEach</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span> <span class="p">{</span>
+  <span class="o">//</span><span class="n">context</span><span class="o">.</span><span class="n">fillRect</span><span class="p">(</span><span class="n">platform</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">platformWidth</span><span class="p">,</span> <span class="n">platformHeight</span><span class="p">);</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">pimg</span><span class="p">,</span> <span class="n">platform</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">platformWidth</span><span class="p">,</span> <span class="n">platformHeight</span><span class="p">);</span>
+  <span class="o">//</span> <span class="n">make</span> <span class="n">doodle</span> <span class="n">jump</span> <span class="k">if</span> <span class="n">it</span> <span class="n">collides</span> <span class="k">with</span> <span class="n">a</span> <span class="n">platform</span> <span class="kn">from</span> <span class="nn">above</span>
+  <span class="k">if</span> <span class="p">(</span>
+    <span class="o">//</span> <span class="n">doodle</span> <span class="ow">is</span> <span class="n">falling</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Dy</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+    <span class="o">//</span> <span class="n">doodle</span> <span class="n">was</span> <span class="n">previous</span> <span class="n">above</span> <span class="n">the</span> <span class="n">platform</span>
+    <span class="n">prevDoodleY</span> <span class="o">+</span> <span class="n">doodle</span><span class="o">.</span><span class="n">H</span> <span class="o">&lt;=</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span> <span class="o">&amp;&amp;</span>
+    <span class="o">//</span> <span class="n">doodle</span> <span class="n">collides</span> <span class="k">with</span> <span class="n">platform</span>
+    <span class="o">//</span> <span class="p">(</span><span class="n">Axis</span> <span class="n">Aligned</span> <span class="n">Bounding</span> <span class="n">Box</span> <span class="p">[</span><span class="n">AABB</span><span class="p">]</span> <span class="n">collision</span> <span class="n">check</span><span class="p">)</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">&lt;</span> <span class="n">platform</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">platformWidth</span> <span class="o">&amp;&amp;</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">doodle</span><span class="o">.</span><span class="n">W</span> <span class="o">&gt;</span> <span class="n">platform</span><span class="o">.</span><span class="n">X</span> <span class="o">&amp;&amp;</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span> <span class="o">&lt;</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span> <span class="o">+</span> <span class="n">platformHeight</span> <span class="o">&amp;&amp;</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span> <span class="o">+</span> <span class="n">doodle</span><span class="o">.</span><span class="n">H</span> <span class="o">&gt;</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">reset</span> <span class="n">doodle</span> <span class="n">position</span> <span class="n">so</span> <span class="n">it</span><span class="s1">&#39;s on top of the platform</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span> <span class="o">-</span> <span class="n">doodle</span><span class="o">.</span><span class="n">H</span><span class="p">;</span>
+    <span class="n">doodle</span><span class="o">.</span><span class="n">Dy</span> <span class="o">=</span> <span class="n">bounceVelocity</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="o">//</span> <span class="n">draw</span> <span class="n">doodle</span>
+<span class="n">context</span><span class="o">.</span><span class="n">fillStyle</span> <span class="o">=</span> <span class="s1">&#39;yellow&#39;</span><span class="p">;</span>
+<span class="o">//</span><span class="n">context</span><span class="o">.</span><span class="n">fillRect</span><span class="p">(</span><span class="n">doodle</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">W</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">H</span><span class="p">);</span>
+<span class="n">context</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">dimg</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">W</span><span class="p">,</span> <span class="n">doodle</span><span class="o">.</span><span class="n">H</span><span class="p">);</span>
+<span class="n">prevDoodleY</span> <span class="o">=</span> <span class="n">doodle</span><span class="o">.</span><span class="n">Y</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">remove</span> <span class="nb">any</span> <span class="n">platforms</span> <span class="n">that</span> <span class="n">have</span> <span class="n">gone</span> <span class="n">offscreen</span>
+<span class="n">doodlePlatforms</span> <span class="o">=</span> <span class="n">doodlePlatforms</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">platform</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">platform</span><span class="o">.</span><span class="n">Y</span> <span class="o">&lt;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">height</span><span class="p">;</span>
+<span class="p">})</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">listen</span> <span class="n">to</span> <span class="n">keyboard</span> <span class="n">events</span> <span class="n">to</span> <span class="n">move</span> <span class="n">doodle</span>
+<span class="n">document</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">left</span> <span class="n">arrow</span> <span class="n">key</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">which</span> <span class="o">===</span> <span class="mi">37</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">keydown</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+  <span class="n">playerDir</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">right</span> <span class="n">arrow</span> <span class="n">key</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">which</span> <span class="o">===</span> <span class="mi">39</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">keydown</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+  <span class="n">playerDir</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">doodle</span><span class="o">.</span><span class="n">Dx</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">});</span>
+<span class="n">document</span><span class="o">.</span><span class="n">addEventListener</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">keydown</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="o">//</span> <span class="n">start</span> <span class="n">the</span> <span class="n">game</span>
+<span class="n">windowId</span> <span class="o">=</span> <span class="n">requestAnimationFrame</span><span class="p">(</span><span class="n">loop</span><span class="p">);</span>
+<span class="o">//</span><span class="n">updateScore</span><span class="p">();</span>
 </pre></div>
 
     </div>
